@@ -62,6 +62,14 @@ npx -y @smithery/cli install @shinzo-labs/gmail-mcp
 
 Enter your `CLIENT_ID`, `CLIENT_SECRET`, and `REFRESH_TOKEN` when prompted.
 
+### Installing via Smithery
+
+To install gmail-mcp automatically via [Smithery](https://smithery.ai/server/@shinzo-labs/gmail-mcp):
+
+```bash
+npx -y @smithery/cli install @shinzo-labs/gmail-mcp
+```
+
 ### Smithery SDK
 
 If you are developing your own agent application, you can use the boilerplate code [here](https://smithery.ai/server/@shinzo-labs/gmail-mcp/api).
