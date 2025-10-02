@@ -1,27 +1,34 @@
-FROM node:lts-alpine
+# Use Node 22 slim for better compatibility with Smithery
+FROM node:22-slim
 
 WORKDIR /app
 
+# Environment vars
 ENV NODE_OPTIONS="--max-old-space-size=4096"
 ENV MCP_CONFIG_DIR=/home/node/.gmail-mcp
 
-# Create logging directory with proper ownership
+# Create logging/config dir
 RUN mkdir -p /home/node/.gmail-mcp && \
     chown -R node:node /home/node/.gmail-mcp && \
     chmod -R 755 /home/node/.gmail-mcp
 
+# Install pnpm
 RUN npm install -g pnpm
 
-COPY --chown=node:node package.json pnpm-lock.yaml ./
+# Copy manifests first (leverage Docker layer caching)
+COPY package.json pnpm-lock.yaml* ./
 
-RUN pnpm fetch
-RUN pnpm install -r --offline
+# Install dependencies
+RUN pnpm install --frozen-lockfile
 
-COPY --chown=node:node src/ ./src/
-COPY --chown=node:node tsconfig.json ./
+# Copy source code
+COPY . .
 
+# Build TypeScript → dist
 RUN pnpm build
 
+# Run as non-root user
 USER node
 
-ENTRYPOINT ["pnpm", "run", "start"]
+# Default start command
+CMD ["pnpm", "start"]
