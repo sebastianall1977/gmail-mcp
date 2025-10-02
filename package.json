@@ -1,15 +1,17 @@
 {
-  "name": "@shinzolabs/gmail-mcp",
-  "version": "1.7.4",
-  "description": "Gmail MCP - Provides complete Gmail API access with file-based OAuth2 authentication",
+  "name": "gmail-mcp7",
+  "version": "1.0.0",
+  "description": "Gmail MCP7 - Provides complete Gmail API access with web-based OAuth2 authentication",
   "type": "module",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
   "bin": {
-    "gmail-mcp": "./dist/index.js"
+    "gmail-mcp7": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "start": "node ./dist/index.js",
-    "auth": "node ./dist/index.js auth",
+    "start": "ts-node ./src/index.ts",
+    "auth": "ts-node ./src/index.ts auth",
     "test": "jest"
   },
   "dependencies": {
@@ -20,7 +22,10 @@
     "googleapis": "129.0.0",
     "open": "9.1.0",
     "ts-node": "10.9.2",
-    "zod": "3.22.4"
+    "zod": "3.22.4",
+    "express": "^4.19.2",
+    "node-fetch": "^3.3.2",
+    "querystring": "^0.2.1"
   },
   "devDependencies": {
     "@babel/core": "7.27.1",
@@ -36,15 +41,15 @@
   "keywords": [
     "gmail",
     "mcp",
-    "claude",
-    "anthropic",
-    "email"
+    "smithery",
+    "email",
+    "oauth2"
   ],
-  "author": "Austin Born (austin@shinzolabs.com)",
+  "author": "Sebastian Allerelli",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shinzo-labs/gmail-mcp"
+    "url": "https://github.com/sebastianall1977/gmail-mcp"
   },
   "engines": {
     "node": ">=18.0.0"
