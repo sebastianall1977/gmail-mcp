@@ -2,7 +2,7 @@
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
-import { createStatefulServer } from "@smithery/sdk/server/stateful.js"
+import { createStatefulServer } from "@smithery/sdk/server/stateful";
 import { z } from "zod"
 import { google, gmail_v1 } from 'googleapis'
 import fs from "fs"
