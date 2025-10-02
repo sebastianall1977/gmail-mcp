@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "description": "Gmail MCP7 - Provides complete Gmail API access with web-based OAuth2 authentication",
   "type": "module",
-  "main": "./src/index.ts",
-  "module": "./src/index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "bin": {
     "gmail-mcp7": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "start": "ts-node ./src/index.ts",
-    "auth": "ts-node ./src/index.ts auth",
+    "start": "node ./dist/index.js",
+    "auth": "node ./dist/index.js auth",
+    "dev": "ts-node --esm ./src/index.ts",
     "test": "jest"
   },
   "dependencies": {
@@ -32,8 +33,10 @@
     "@babel/preset-env": "7.27.2",
     "@babel/preset-typescript": "7.27.1",
     "@changesets/cli": "2.29.4",
+    "@types/express": "^4.17.21",
     "@types/jest": "29.5.14",
     "@types/node": "20.17.27",
+    "@types/querystring": "^0.2.2",
     "babel-jest": "29.7.0",
     "jest": "29.7.0",
     "typescript": "5.8.2"
