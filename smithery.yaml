@@ -1,21 +1,13 @@
-name: gmail-mcp7
-runtime: container
-startCommand:
-  type: node
-  entry: ./src/index.ts
-env:
-  GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
-  GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
-  OAUTH_REDIRECT_URI: ${OAUTH_REDIRECT_URI}
-configSchema:
-  type: object
-  properties:
-    GOOGLE_CLIENT_ID:
-      type: string
-      description: "OAuth2 Client ID"
-    GOOGLE_CLIENT_SECRET:
-      type: string
-      description: "OAuth2 Client Secret"
-    OAUTH_REDIRECT_URI:
-      type: string
-      description: "OAuth2 Redirect URI"
+{
+  "name": "gmail-mcp7",
+  "runtime": "container",
+  "startCommand": {
+    "type": "http",
+    "command": ["node", "dist/index.js"]
+  },
+  "env": {
+    "GOOGLE_CLIENT_ID": "@secret.GOOGLE_CLIENT_ID",
+    "GOOGLE_CLIENT_SECRET": "@secret.GOOGLE_CLIENT_SECRET",
+    "OAUTH_REDIRECT_URI": "@secret.OAUTH_REDIRECT_URI"
+  }
+}
